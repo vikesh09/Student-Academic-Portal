@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduSpark - Timetable Dashboard</title>
+    <link rel="stylesheet" href="tt.css">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    
+</head>
+<body>
+    <div class="stars-container">
+        <div class="stars"></div>
+    </div>
+    <div class="cosmic-overlay"></div>
+    
+    <!-- Professional Header -->
+    <header class="header">
+        <div class="header-container">
+            <h1 class="logo">B.Tech Timetable Dashboard</h1>
+            <select name="branch" id="branch">
+                <option>COE</option>
+                <option>CSDA</option>
+                <option>SE</option>
+                <option>IT</option>
+                <option>ITCY</option>
+                <option>ECE</option>
+                <option>EVDT</option>
+                <option>EE</option>
+                <option>ME</option>
+                <option>EP</option>
+                <option>CE</option>
+                <option>CHE</option>
+                <option>BT</option>
+                <option>PIE</option>
+                <option>MCE</option>
+            </select>
+            <!-- <select name="Section" id="Section">
+                <option></option>
+            </select> -->
+            <div class="header-actions">
+                <div class="current-time">
+                    <i class="fas fa-clock"></i>
+                    <span id="currentTime">Loading...</span>
+                </div>
+                <button class="add-btn" onclick="showAddModal()">
+                    <i class="fas fa-plus"></i>
+                    Add Class
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            <button class="nav-tab active" data-tab="weekly">Weekly View</button>
+            <button class="nav-tab" data-tab="daily">Today's Schedule</button>
+            <button class="nav-tab" data-tab="upcoming">Upcoming Classes</button>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-week"></i>
+                    </div>
+                </div>
+                <div class="stat-number" id="totalClasses">15</div>
+                <div class="stat-label">Classes This Week</div>
+                <div class="stat-trend">↗ 5 days active</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon green">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="stat-number" id="currentClassStatus">-</div>
+                <div class="stat-label">Current Status</div>
+                <div class="stat-trend" id="currentClassInfo">No class</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon orange">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                </div>
+                <div class="stat-number" id="nextClass">-</div>
+                <div class="stat-label">Next Class</div>
+                <div class="stat-trend" id="nextClassInfo">Loading...</div>
+            </div>
+        </div>
+
+        <!-- Weekly View -->
+        <div id="weekly-view" class="content-view active">
+            <div class="timetable-section">
+                <div class="section-header">
+                    <h2 class="section-title">Weekly Schedule - B.Tech CSE-6 (Semester I)</h2>
+                </div>
+                <div class="timetable-grid">
+                    <table class="timetable">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="time-slot">8:00-9:00</td>
+                                <td class="class-slot subject-electronics">
+                                    <div class="class-name">Basic Electronics</div>
+                                    <div class="class-teacher">EC 101(L)</div>
+                                    <div class="class-room">PB-GF6</div>
+                                </td>
+                                <td class="class-slot subject-aec">
+                                    <div class="class-name">AEC/VAC</div>
+                                    <div class="class-teacher">As Selected</div>
+                                    <div class="class-room">Various</div>
+                                </td>
+                                <td class="class-slot subject-graphics">
+                                    <div class="class-name">Computer Aided Engineering Graphics</div>
+                                    <div class="class-teacher">ME 105 LAB</div>
+                                    <div class="class-room">Lab</div>
+                                </td>
+                                <td class="class-slot subject-aec">
+                                    <div class="class-name">AEC/VAC</div>
+                                    <div class="class-teacher">As Selected</div>
+                                    <div class="class-room">Various</div>
+                                </td>
+                                <td class="class-slot subject-programming">
+                                    <div class="class-name">Programming Fundamentals</div>
+                                    <div class="class-teacher">CO 101(L)</div>
+                                    <div class="class-room">PB-GF6</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="time-slot">9:00-10:00</td>
+                                <td class="class-slot subject-electronics">
+                                    <div class="class-name">Basic Electronics</div>
+                                    <div class="class-teacher">EC 101(L)</div>
+                                    <div class="class-room">PB-GF6</div>
+                                </td>
+                                <td class="class-slot subject-aec">
+                                    <div class="class-name">AEC/VAC</div>
+                                    <div class="class-teacher">As Selected</div>
+                                    <div class="class-room">Various</div>
+                                </td>
+                                <td class="class-slot subject-graphics">
+                                    <div class="class-name">Computer Aided Engineering Graphics</div>
+                                    <div class="class-teacher">ME 105 LAB</div>
+                                    <div class="class-room">Lab</div>
+                                </td>
+                                <td class="class-slot subject-aec">
+                                    <div class="class-name">AEC/VAC</div>
+                                    <div class="class-teacher">As Selected</div>
+                                    <div class="class-room">Various</div>
+                                </td>
+                                <td class="class-slot subject-programming">
+                                    <div class="class-name">Programming Fundamentals</div>
+                                    <div class="class-teacher">CO 101(L)</div>
+                                    <div class="class-room">PB-GF6</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="time-slot">10:00-11:00</td>
+                                <td class="class-slot subject-programming">
+                                    <div class="class-name">Programming Fundamentals</div>
+                                    <div class="class-teacher">CO 101(L)</div>
+                                    <div class="class-room">PB-GF6</div>
+                                </td>
+                                <td class="class-slot subject-electronics">
+                                    <div class="class-name">Electronics Lab</div>
+                                    <div class="class-teacher">EC 101(P) LAB</div>
+                                    <div class="class-room">Lab</div>
+                                </td>
+                                <td class="class-slot subject-math">
+                                    <div class="class-name">Mathematics-I Lecture</div>
+                                    <div class="class-teacher">AM 101 (L)</div>
+                                    <div class="class-room">PB-GF4</div>
+                                </td>
+                                <td class="class-slot subject-graphics">
+                                    <div class="class-name">Computer Aided Engineering Graphics</div>
+                                    <div class="class-teacher">ME 105(L)</div>
+                                    <div class="class-room">PB-GF6</div>
+                                </td>
+                                <td class="empty-slot"></td>
+                            </tr>
+                            <tr>
+                                <td class="time-slot">11:00-12:00</td>
+                                <td class="empty-slot"></td>
+                                <td class="class-slot subject-electronics">
+                                    <div class="class-name">Electronics Lab</div>
+                                    <div class="class-teacher">EC 101(P) LAB</div>
+                                    <div class="class-room">Lab</div>
+                                </td>
+                                <td class="class-slot subject-math">
+                                    <div class="class-name">Mathematics-I Tutorial</div>
+                                    <div class="class-teacher">AM 101 G1(T)</div>
+                                    <div class="class-room">PB-GF4(G1),AB-3(G2)</div>
+                                </td>
+                                <td class="class-slot subject-web">
+                                    <div class="class-name">Web Designing</div>
+                                    <div class="class-teacher">SEC-1 (CS103)</div>
+                                    <div class="class-room">PB-FF6</div>
+                                </td>
+                                <td class="class-slot subject-electronics">
+                                    <div class="class-name">Basic Electronics</div>
+                                    <div class="class-teacher">EC 101(L)</div>
+                                    <div class="class-room">TW2-FF1</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="time-slot">12:00-13:00</td>
+                                <td class="class-slot subject-web">
+                                    <div class="class-name">Web Designing Lab</div>
+                                    <div class="class-teacher">SEC-1 (CS-103)</div>
+                                    <div class="class-room">Prog Lab</div>
+                                </td>
+                                <td class="class-slot subject-programming">
+                                    <div class="class-name">Programming Fundamentals Lab</div>
+                                    <div class="class-teacher">CO 101(P) LAB</div>
+                                    <div class="class-room">Lab</div>
+                                </td>
+                                <td class="empty-slot"></td>
+                                <td class="empty-slot"></td>
+                                <td class="empty-slot"></td>
+                            </tr>
+                            <tr>
+                                <td class="time-slot">13:00-14:00</td>
+                                <td class="class-slot subject-web">
+                                    <div class="class-name">Web Designing Lab</div>
+                                    <div class="class-teacher">SEC-1 (CS-103)</div>
+                                    <div class="class-room">Prog Lab</div>
+                                </td>
+                                <td class="class-slot subject-programming">
+                                    <div class="class-name">Programming Fundamentals Lab</div>
+                                    <div class="class-teacher">CO 101(P) LAB</div>
+                                    <div class="class-room">Lab</div>
+                                </td>
+                                <td class="class-slot subject-graphics">
+                                    <div class="class-name">Computer Aided Engineering Graphics</div>
+                                    <div class="class-teacher">ME 105(L)</div>
+                                    <div class="class-room">PB-GF6</div>
+                                </td>
+                                <td class="class-slot subject-math">
+                                    <div class="class-name">Mathematics-I Lecture</div>
+                                    <div class="class-teacher">AM 101(L)</div>
+                                    <div class="class-room">PB-GF6</div>
+                                </td>
+                                <td class="empty-slot"></td>
+                            </tr>
+                            <tr>
+                                <td class="time-slot">14:00-15:00</td>
+                                <td class="empty-slot"></td>
+                                <td class="empty-slot"></td>
+                                <td class="class-slot subject-graphics">
+                                    <div class="class-name">Computer Aided Engineering Graphics</div>
+                                    <div class="class-teacher">ME 105(L)</div>
+                                    <div class="class-room">PB-GF6</div>
+                                </td>
+                                <td class="class-slot subject-math">
+                                    <div class="class-name">Mathematics-I Lecture</div>
+                                    <div class="class-teacher">AM 101(L)</div>
+                                    <div class="class-room">PB-GF6</div>
+                                </td>
+                                <td class="empty-slot"></td>
+                            </tr>
+                            <tr>
+                                <td class="time-slot">15:00-16:00</td>
+                                <td class="empty-slot"></td>
+                                <td class="empty-slot"></td>
+                                <td class="empty-slot"></td>
+                                <td class="empty-slot"></td>
+                                <td class="empty-slot"></td>
+                            </tr>
+                            <tr>
+                                <td class="time-slot">16:00-17:00</td>
+                                <td class="zero-hour">Zero Hour (No Classes)</td>
+                                <td class="zero-hour">Zero Hour (No Classes)</td>
+                                <td class="zero-hour">Zero Hour (No Classes)</td>
+                                <td class="zero-hour">Zero Hour (No Classes)</td>
+                                <td class="zero-hour">Zero Hour (No Classes)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Daily View -->
+        <div id="daily-view" class="content-view">
+            <div class="timetable-section">
+                <div class="section-header">
+                    <h2 class="section-title">Today's Schedule</h2>
+                </div>
+                <div class="daily-schedule-grid" id="dailySchedule">
+                    <!-- Daily schedule will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Upcoming View -->
+        <div id="upcoming-view" class="content-view">
+            <div class="timetable-section">
+                <div class="section-header">
+                    <h2 class="section-title">Upcoming Classes</h2>
+                </div>
+                <div class="upcoming-classes-grid" id="upcomingClasses">
+                    <!-- Upcoming classes will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Timetable 
+        const timetableData = {
+            'Monday': [
+                { time: '8:00-9:00', subject: 'Basic Electronics', code: 'EC 101(L)', room: 'PB-GF6', type: 'electronics' },
+                { time: '9:00-10:00', subject: 'Basic Electronics', code: 'EC 101(L)', room: 'PB-GF6', type: 'electronics' },
+                { time: '10:00-11:00', subject: 'Programming Fundamentals', code: 'CO 101(L)', room: 'PB-GF6', type: 'programming' },
+                { time: '12:00-13:00', subject: 'Web Designing Lab', code: 'SEC-1 (CS-103)', room: 'Prog Lab', type: 'web' },
+                { time: '13:00-14:00', subject: 'Web Designing Lab', code: 'SEC-1 (CS-103)', room: 'Prog Lab', type: 'web' },
+            ],
+            'Tuesday': [
+                { time: '8:00-9:00', subject: 'AEC/VAC', code: 'As Selected', room: 'Various', type: 'aec' },
+                { time: '9:00-10:00', subject: 'AEC/VAC', code: 'As Selected', room: 'Various', type: 'aec' },
+                { time: '10:00-11:00', subject: 'Electronics Lab', code: 'EC 101(P) LAB', room: 'Lab', type: 'electronics' },
+                { time: '11:00-12:00', subject: 'Electronics Lab', code: 'EC 101(P) LAB', room: 'Lab', type: 'electronics' },
+                { time: '12:00-13:00', subject: 'Programming Fundamentals Lab', code: 'CO 101(P) LAB', room: 'Lab', type: 'programming' },
+                { time: '13:00-14:00', subject: 'Programming Fundamentals Lab', code: 'CO 101(P) LAB', room: 'Lab', type: 'programming' },
+                
+            ],
+            'Wednesday': [
+                { time: '8:00-9:00', subject: 'Computer Aided Engineering Graphics', code: 'ME 105 LAB', room: 'Lab', type: 'graphics' },
+                 { time: '9:00-10:00', subject: 'Computer Aided Engineering Graphics', code: 'ME 105 LAB', room: 'Lab', type: 'graphics' },
+                { time: '10:00-11:00', subject: 'Mathematics-I Lecture', code: 'AM 101 (L)', room: 'PB-GF4', type: 'math' },
+                { time: '11:00-12:00', subject: 'Mathematics-I Tutorial', code: 'AM 101 G1(T)', room: 'PB-GF4(G1),AB-3(G2)', type: 'math' },
+                { time: '13:00-14:00', subject: 'Computer Aided Engineering Graphics', code: 'ME 105(L)', room: 'PB-GF6', type: 'graphics' },
+                { time: '14:00-15:00', subject: 'Computer Aided Engineering Graphics', code: 'ME 105(L)', room: 'PB-GF6', type: 'graphics' }
+            ],
+            'Thursday': [
+                { time: '8:00-9:00', subject: 'AEC/VAC', code: 'As Selected', room: 'Various', type: 'aec' },
+                { time: '9:00-10:00', subject: 'AEC/VAC', code: 'As Selected', room: 'Various', type: 'aec' },
+                { time: '10:00-11:00', subject: 'Computer Aided Engineering Graphics', code: 'ME 105(L)', room: 'PB-GF6', type: 'graphics' },
+                { time: '11:00-12:00', subject: 'Web Designing', code: 'SEC-1 (CS103)', room: 'PB-FF6', type: 'web' },
+                { time: '13:00-14:00', subject: 'Mathematics-I Lecture', code: 'AM 101(L)', room: 'PB-GF6', type: 'math' },
+                { time: '14:00-15:00', subject: 'Mathematics-I Lecture', code: 'AM 101(L)', room: 'PB-GF6', type: 'math' },
+                
+            ],
+            'Friday': [
+                { time: '8:00-9:00', subject: 'Programming Fundamentals', code: 'CO 101(L)', room: 'PB-GF6', type: 'programming' },
+                { time: '9:00-10:00', subject: 'Programming Fundamentals', code: 'CO 101(L)', room: 'PB-GF6', type: 'programming' },
+                { time: '11:00-12:00', subject: 'Basic Electronics', code: 'EC 101(L)', room: 'TW2-FF1', type: 'electronics' },
+            ]
+        };
+
+        // Update current time
+        function updateCurrentTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { 
+                hour: 'numeric', 
+                minute: '2-digit',
+                hour12: true 
+            });
+            document.getElementById('currentTime').textContent = timeString;
+        }
+
+        // Get current day
+        function getCurrentDay() {
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            return days[new Date().getDay()];
+        }
+
+        // Get current time in minutes since midnight
+        function getCurrentTimeMinutes() {
+            const now = new Date();
+            return now.getHours() * 60 + now.getMinutes();
+        }
+
+        // Convert time string to minutes
+        function timeToMinutes(timeStr) {
+            const [start] = timeStr.split('-');
+            const [hours, minutes] = start.split(':').map(Number);
+            return hours * 60 + minutes;
+        }
+
+        // Update current class status
+        function updateCurrentStatus() {
+            const currentDay = getCurrentDay();
+            const currentTime = getCurrentTimeMinutes();
+            const todayClasses = timetableData[currentDay] || [];
+            
+            let currentClass = null;
+            let nextClass = null;
+
+            // Find current class
+            for (const cls of todayClasses) {
+                const classStart = timeToMinutes(cls.time);
+                const classEnd = classStart + 60; // Assuming 60-minute classes
+                
+                if (currentTime >= classStart && currentTime < classEnd) {
+                    currentClass = cls;
+                    break;
+                }
+            }
+
+            // Find next class
+            for (const cls of todayClasses) {
+                const classStart = timeToMinutes(cls.time);
+                if (classStart > currentTime) {
+                    nextClass = cls;
+                    break;
+                }
+            }
+
+            // If no next class today, look for tomorrow's first class
+            if (!nextClass) {
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                const tomorrowDay = tomorrow.toLocaleDateString('en-US', { weekday: 'long' });
+                const tomorrowClasses = timetableData[tomorrowDay] || [];
+                if (tomorrowClasses.length > 0) {
+                    nextClass = { ...tomorrowClasses[0], day: tomorrowDay };
+                }
+            }
+
+            // Update UI
+            if (currentClass) {
+                document.getElementById('currentClassStatus').textContent = 'In Class';
+                document.getElementById('currentClassInfo').textContent = currentClass.subject;
+            } else {
+                document.getElementById('currentClassStatus').textContent = 'Free';
+                document.getElementById('currentClassInfo').textContent = 'No ongoing class';
+            }
+
+            if (nextClass) {
+                document.getElementById('nextClass').textContent = nextClass.time.split('-')[0];
+                document.getElementById('nextClassInfo').textContent = nextClass.day ? 
+                    `${nextClass.subject} (${nextClass.day})` : nextClass.subject;
+            } else {
+                document.getElementById('nextClass').textContent = '-';
+                document.getElementById('nextClassInfo').textContent = 'No upcoming classes';
+            }
+        }
+
+        // Populate daily schedule
+        function populateDailySchedule() {
+            const currentDay = getCurrentDay();
+            const todayClasses = timetableData[currentDay] || [];
+            const container = document.getElementById('dailySchedule');
+
+            if (todayClasses.length === 0) {
+                container.innerHTML = `
+                    <div class="no-class">
+                        <i class="fas fa-calendar-times"></i>
+                        <h3>No classes today!</h3>
+                        <p>Enjoy your day off.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = todayClasses.map(cls => `
+                <div class="schedule-card">
+                    <div class="schedule-time">${cls.time}</div>
+                    <div class="schedule-class">${cls.subject}</div>
+                    <div class="schedule-details">${cls.code} • ${cls.room}</div>
+                </div>
+            `).join('');
+        }
+
+        // Populate upcoming classes
+        function populateUpcomingClasses() {
+            const currentDay = getCurrentDay();
+            const currentTime = getCurrentTimeMinutes();
+            const container = document.getElementById('upcomingClasses');
+            
+            let upcomingClasses = [];
+
+            // Get remaining classes for today
+            const todayClasses = timetableData[currentDay] || [];
+            for (const cls of todayClasses) {
+                const classStart = timeToMinutes(cls.time);
+                if (classStart > currentTime) {
+                    upcomingClasses.push({ ...cls, day: 'Today' });
+                }
+            }
+
+            // Get classes for next few days
+            const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+            const currentDayIndex = days.indexOf(currentDay);
+            
+            for (let i = 1; i <= 3; i++) {
+                const nextDayIndex = (currentDayIndex + i) % 5;
+                const nextDay = days[nextDayIndex];
+                const nextDayClasses = timetableData[nextDay] || [];
+                
+                nextDayClasses.slice(0, 2).forEach(cls => {
+                    upcomingClasses.push({ ...cls, day: nextDay });
+                });
+            }
+
+            upcomingClasses = upcomingClasses.slice(0, 6); // Show only next 6 classes
+
+            if (upcomingClasses.length === 0) {
+                container.innerHTML = `
+                    <div class="no-class">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>No upcoming classes!</h3>
+                        <p>You're all caught up for now.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = upcomingClasses.map(cls => `
+                <div class="schedule-card">
+                    <div class="schedule-time">${cls.day} • ${cls.time}</div>
+                    <div class="schedule-class">${cls.subject}</div>
+                    <div class="schedule-details">${cls.code} • ${cls.room}</div>
+                </div>
+            `).join('');
+        }
+
+        // Tab switching
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabName = tab.getAttribute('data-tab');
+                
+                // Update active tab
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Show corresponding view
+                document.querySelectorAll('.content-view').forEach(view => view.classList.remove('active'));
+                document.getElementById(`${tabName}-view`).classList.add('active');
+                
+                // Refresh data for the selected tab
+                if (tabName === 'daily') {
+                    populateDailySchedule();
+                } else if (tabName === 'upcoming') {
+                    populateUpcomingClasses();
+                }
+            });
+        });
+
+        // Add class modal (placeholder)
+        function showAddModal() {
+            alert('Add Class feature coming soon!');
+        }
+
+        // Initialize
+        function init() {
+            updateCurrentTime();
+            updateCurrentStatus();
+            populateDailySchedule();
+            populateUpcomingClasses();
+            
+            // Update time every minute
+            setInterval(updateCurrentTime, 60000);
+            // Update status every 5 minutes
+            setInterval(updateCurrentStatus, 300000);
+        }
+
+        // Start the application
+        init();
+    </script>
+</body>
+</html>
