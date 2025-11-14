@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login Page </title>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <!-- Animated background container -->
+    <div class="stars-container">
+      <div class="stars"></div>
+    </div>
+    
+    <!-- Main form container -->
+    <div class="container">
+        <div class="CreateAccount">
+            <h1>Student Login</h1>
+            <div class="creadential">
+                <!-- The form submits to a placeholder PHP file. -->
+                <form action="CreateAccount.php" method="POST">
+                    <!-- Username Input -->
+                    <div class="input-box">
+                        <span class="icon"><i class="fas fa-user"></i></span>
+                        <input type="text" name="username" placeholder="Username" required>
+                    </div>
+                    
+                    <!-- Password Input -->
+                    <div class="input-box">
+                        <span class="icon"><i class="fas fa-lock"></i></span>
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+                    
+                    <!-- Terms and Conditions Checkbox -->
+                    <div class="remember-forgot">
+                        <label><input type="checkbox" required> I agree to the Terms & Conditions</label>
+                    </div>
+                    <!-- Log In Button -->
+                    <div class="Login-button">
+                        <input type="submit" value="Log In">
+                    </div>
+                    <!-- Sign Up Link -->
+                    <div class="sign-up">
+                        <p>Don't have an account? <a href="CreateAccount.html">Sign Up</a></p>
+                    </div>  
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,211 @@
+/* General body styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #0c0c1c; /* Dark space background */
+            overflow: hidden; /* Hide overflow from stars */
+        }
+
+        /* Animated starry background */
+        .stars-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .stars {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+        }
+
+        .stars::after {
+            content: '';
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            background: #fff;
+            box-shadow: 
+                -23vw 3vh 1px 0px #fff, 4vw 4vh 0px 0px #fff, 1vw 13vh 1px 0px #fff, 
+                -4vw 14vh 1px 1px #fff, -11vw 20vh 1px 0px #fff, 3vw 22vh 0px 1px #fff, 
+                14vw 25vh 0px 1px #fff, -18vw 27vh 1px 1px #fff, -2vw 32vh 1px 0px #fff, 
+                16vw 34vh 1px 0px #fff, -17vw 40vh 0px 1px #fff, 1vw 42vh 0px 1px #fff, 
+                -10vw 49vh 1px 1px #fff, 16vw 2vh 0px 1px #fff, -20vw 8vh 1px 1px #fff, 
+                11vw 12vh 0px 1px #fff, 2vw 18vh 1px 1px #fff, 19vw 21vh 0px 0px #fff, 
+                -8vw 26vh 1px 0px #fff, 5vw 31vh 1px 0px #fff, 12vw 37vh 1px 1px #fff, 
+                -19vw 39vh 0px 1px #fff, -3vw 45vh 0px 1px #fff, 10vw 50vh 1px 0px #fff;
+            animation: anim-stars 50s linear infinite;
+        }
+        
+        @keyframes anim-stars {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-2000px); }
+        }
+
+        /* Main container for the form */
+        .container {
+            position: relative;
+            width: 400px;
+            background: rgba(255, 255, 255, 0.1); /* Frosted glass effect */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            color: #fff;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .container h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        /* Input fields with icons */
+        .input-box {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            margin-bottom: 25px;
+        }
+
+        .input-box .icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1em;
+            color: #fff;
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            outline: none;
+            font-size: 1em;
+            color: #fff;
+            padding: 0 15px 0 45px;
+            transition: border-color 0.3s;
+        }
+
+        .input-box input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .input-box input:focus {
+            border-color: #fff;
+        }
+
+        /* Checkbox and terms agreement */
+        .remember-forgot {
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .remember-forgot label input {
+            margin-right: 8px;
+            accent-color: #4a90e2;
+        }
+
+       
+        
+        
+
+        
+
+        
+        
+
+        
+
+        /* Responsive adjustments */
+        @media (max-width: 450px) {
+            .container {
+                width: 90%;
+                padding: 30px;
+            }
+            .container h1 {
+                font-size: 1.8em;
+            }
+        }
+        body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  background: #0a0a0a;
+  color: white;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Animated Stars Background */
+.stars-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+}
+
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+    radial-gradient(
+      1px 1px at 130px 80px,
+      rgba(255, 255, 255, 0.6),
+      transparent
+    ),
+    radial-gradient(2px 2px at 160px 30px, #ddd, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: sparkleMove 25s linear infinite;
+}
+
+@keyframes sparkleMove {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100px);
+  }
+}
+.Login-buttons input[type="submit"] {
+            width: 100%;
+            height: 50px;
+            background: #4a90e2;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1em;
+            color: #fff;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+ /* Log In  button */
+.Login-button {
+            width: 100%;
+            margin-bottom: 20px;
+ }
